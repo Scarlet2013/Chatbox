@@ -19,7 +19,7 @@
       flex-direction: column;
       justify-content: flex-end;
       padding: 10px;
-      background: rgba(0, 0, 0, 0.1); /* Highly transparent background */
+      background: rgba(0, 0, 0, 0.1); /* Transparent background */
       overflow: hidden;
     }
 
@@ -37,7 +37,7 @@
     }
 
     .message {
-      background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for messages */
+      background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
       color: white;
       padding: 8px 12px;
       border-radius: 10px;
@@ -72,25 +72,13 @@
 </head>
 <body>
   <div class="chatbox">
-    <div class="messages" id="messages">
-      <div class="message"><span class="username">User1:</span>Hey everyone!</div>
-      <div class="message"><span class="username">StreamerBot:</span>Welcome to the stream 🔥</div>
-    </div>
+    <div class="messages" id="messages"></div>
   </div>
 
-  <script>
-    // Example: Add a message (In real Twitch integration, use PubSub/WebSocket or Twitch API)
-    function addMessage(username, text) {
-      const messages = document.getElementById("messages");
-      const message = document.createElement("div");
-      message.className = "message";
-      message.innerHTML = `<span class="username">${username}:</span>${text}`;
-      messages.appendChild(message);
-      messages.scrollTop = messages.scrollHeight;
-    }
+  <!-- Include tmi.js for Twitch chat functionality -->
+  <script src="https://cdn.jsdelivr.net/npm/tmi.js"></script>
 
-    // Example usage
-    // addMessage('Viewer123', 'This is amazing!');
-  </script>
-</body>
-</html>
+  <script>
+    // Replace these variables with your own details
+    const channelName = 'YOUR_TWITCH_CHANNEL'; // Replace with the channel name
+    const
