@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cyber Chatbox</title>
+  <title>Chat</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
 
@@ -15,7 +15,7 @@
       margin: 0;
       padding: 0;
       font-family: 'Orbitron', sans-serif;
-      background: url('https://images.unsplash.com/photo-1604079624572-3b5b47e0e106?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background: url('https://images.unsplash.com/photo-1549921296-3a4c87c5a16b?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
       background-size: cover;
       display: flex;
       justify-content: center;
@@ -26,24 +26,14 @@
     .chatbox {
       width: 400px;
       height: 650px;
-      background: rgba(10, 10, 10, 0.5);
-      backdrop-filter: blur(10px);
-      border: 2px solid #ff004c;
+      background: rgba(20, 10, 20, 0.55);
+      backdrop-filter: blur(12px);
+      border: 2px solid #ff3377;
       border-radius: 16px;
-      box-shadow: 0 0 30px #ff004c88;
+      box-shadow: 0 0 40px #ff337788;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-    }
-
-    .chatbox-header {
-      background: rgba(30, 30, 30, 0.85);
-      color: #ff004c;
-      text-align: center;
-      padding: 18px;
-      font-size: 1.8em;
-      letter-spacing: 2px;
-      border-bottom: 2px solid #ff004c;
     }
 
     .chatbox-messages {
@@ -59,9 +49,9 @@
     }
 
     .message .username {
-      color: #ff004c;
+      color: #ff3377;
       font-weight: bold;
-      text-shadow: 0 0 5px #ff004caa;
+      text-shadow: 0 0 6px #ff3377aa;
     }
 
     .message .text {
@@ -71,15 +61,15 @@
 
     .message .time {
       margin-left: 10px;
-      color: #aaaaaa;
+      color: #bbbbbb;
       font-size: 0.75em;
     }
 
     .chatbox-input {
       display: flex;
       padding: 15px;
-      background: rgba(30, 30, 30, 0.85);
-      border-top: 2px solid #ff004c;
+      background: rgba(15, 5, 15, 0.85);
+      border-top: 2px solid #ff3377;
     }
 
     .chatbox-input input {
@@ -89,12 +79,14 @@
       border: none;
       outline: none;
       font-size: 1em;
+      background: #1a1a1a;
+      color: #fff;
     }
 
     .chatbox-input button {
       margin-left: 10px;
       padding: 10px 16px;
-      background: #ff004c;
+      background: #ff3377;
       color: white;
       border: none;
       border-radius: 8px;
@@ -104,7 +96,7 @@
     }
 
     .chatbox-input button:hover {
-      background: #e60039;
+      background: #e6005a;
     }
 
     @keyframes fadeIn {
@@ -117,14 +109,13 @@
     }
 
     .chatbox-messages::-webkit-scrollbar-thumb {
-      background-color: #ff004c;
+      background-color: #ff3377;
       border-radius: 4px;
     }
   </style>
 </head>
 <body>
   <div class="chatbox">
-    <div class="chatbox-header">Cyber Chat</div>
     <div class="chatbox-messages" id="messages"></div>
     <div class="chatbox-input">
       <input id="chatInput" type="text" placeholder="Type your message..." />
@@ -142,7 +133,6 @@
 
       appendMessage("You", message);
       input.value = "";
-      setTimeout(() => botReply(message), 700);
     }
 
     function appendMessage(user, text) {
@@ -152,17 +142,6 @@
       messageEl.innerHTML = `<span class='username'>${user}:</span><span class='text'>${text}</span><span class='time'>(${time})</span>`;
       messagesEl.appendChild(messageEl);
       messagesEl.scrollTop = messagesEl.scrollHeight;
-    }
-
-    function botReply(input) {
-      const lower = input.toLowerCase();
-      let response = "I'm here to chat! Try saying 'hello', 'help' or 'discord'.";
-
-      if (lower.includes("hello")) response = "Hey there! How can I help you today?";
-      else if (lower.includes("discord")) response = "Join our Discord: discord.gg/example";
-      else if (lower.includes("help")) response = "Need help? Try typing '!commands' for a list.";
-
-      appendMessage("Bot", response);
     }
   </script>
 </body>
